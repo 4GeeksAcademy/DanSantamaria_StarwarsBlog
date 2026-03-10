@@ -1,0 +1,23 @@
+*{
+    color: white;
+    font-size: 12px;
+}
+
+a{
+    color: white
+}
+
+.hr-thick{
+  border-top: 1px solid white;
+  opacity: 1;
+  margin-top: 30px;
+}
+
+.image{
+    width: 300px;
+    border-radius: 50px 0;
+}
+
+.view_more_button {
+    width: 150px;
+}
