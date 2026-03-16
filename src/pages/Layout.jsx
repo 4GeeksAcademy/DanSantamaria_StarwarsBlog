@@ -16,6 +16,7 @@ export const Layout = () => {
                 minHeight: "100vh"
             }}>
                 <Navbar />
+                <hr className="hr-thick" />
                 <Outlet />
                 <hr className="hr-thick" />
                 <Footer />
