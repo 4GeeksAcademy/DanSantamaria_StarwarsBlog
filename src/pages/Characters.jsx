@@ -8,9 +8,6 @@ export const Characters = () => {
             <h1>Characters</h1>
             <div className="d-flex">
                 <Card />
-                <Card />
-                <Card />
-                <Card />
             </div>
         </div>
     );
