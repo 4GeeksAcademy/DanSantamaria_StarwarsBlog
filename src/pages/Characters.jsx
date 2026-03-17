@@ -7,7 +7,14 @@ export const Characters = () => {
         <div className="container">
             <h1>Characters</h1>
             <div className="d-flex">
-                <Card />
+                <Card
+                    name="Luke Skywalker"
+                    gender="male"
+                    hair="blonde"
+                    eyes="Green"
+                    uid="1"
+                    type="characters"
+                />
             </div>
         </div>
     );

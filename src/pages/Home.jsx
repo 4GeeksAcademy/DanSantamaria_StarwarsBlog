@@ -22,35 +22,45 @@ export const Home = () => {
 							CHARACTERS
 						</button>
 					</Link>
-					<button className="btn btn-outline-light ms-2 me-3 galaxy_button">
-						VEHICLES
-					</button>
-					<button className="btn btn-outline-light ms-2 me-3 galaxy_button">
-						PLANETS
-					</button>
+					<Link to="/vehicles">
+						<button className="btn btn-outline-light ms-2 me-3 galaxy_button">
+							VEHICLES
+						</button>
+					</Link>
+					<Link to="/planets">
+						<button className="btn btn-outline-light ms-2 me-3 galaxy_button">
+							PLANETS
+						</button>
+					</Link>
 				</div>
 
 				<div className="d-flex justify-content-around">
 
 					<div className="d-flex flex-column me-5">
 						<img src={characters} alt="" className="image mb-4" />
-						<button className="btn btn-outline-light ms-2  view_more_button">
-							VIEW MORE
-						</button>
+						<Link to="/characters">
+							<button className="btn btn-outline-light ms-2 me-3 galaxy_button">
+								VIEW MORE
+							</button>
+						</Link>
 					</div>
 
 					<div className="d-flex flex-column me-5">
 						<img src={vehicles} alt="" className="image mb-4" />
-						<button className="btn btn-outline-light ms-2  view_more_button">
-							VIEW MORE
-						</button>
+						<Link to="/vehicles">
+							<button className="btn btn-outline-light ms-2 me-3 galaxy_button">
+								VIEW MORE
+							</button>
+						</Link>
 					</div>
 
 					<div className="d-flex flex-column mb-5">
 						<img src={planets} alt="" className="image mb-4" />
-						<button className="btn btn-outline-light ms-2 view_more_button">
-							VIEW MORE
-						</button>
+						<Link to="/planets">
+							<button className="btn btn-outline-light ms-2 me-3 galaxy_button">
+								VIEW MORE
+							</button>
+						</Link>
 
 					</div>
 				</div>

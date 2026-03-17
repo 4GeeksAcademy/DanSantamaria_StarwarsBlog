@@ -23,17 +23,29 @@ export const Navbar = () => {
 					<div className="collapse navbar-collapse text-center" id="navbarNav">
 						<ul className="navbar-nav ms-auto">
 
-							<li className="nav-item">
-								<a className="nav-link" href="#">CHARACTERS</a>
-							</li>
+							<Link to="/">
+								<li className="nav-item">
+									<a className="nav-link" href="#">HOME</a>
+								</li>
+							</Link>
 
-							<li className="nav-item">
-								<a className="nav-link" href="#">VEHICLES</a>
-							</li>
+							<Link to="/characters">
+								<li className="nav-item">
+									<a className="nav-link" href="#">CHARACTERS</a>
+								</li>
+							</Link>
 
-							<li className="nav-item">
-								<a className="nav-link" href="#">PLANETS</a>
-							</li>
+							<Link to="/vehicles">
+								<li className="nav-item">
+									<a className="nav-link" href="#">VEHICLES</a>
+								</li>
+							</Link>
+
+							<Link to="/planets">
+								<li className="nav-item">
+									<a className="nav-link" href="#">PLANETS</a>
+								</li>
+							</Link>
 
 							<li className="nav-item dropdown">
 
@@ -65,7 +77,7 @@ export const Navbar = () => {
 					</div>
 				</div>
 			</nav>
-			
+
 		</div>
 	);
 };
