@@ -1,41 +1,76 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import characters from "../assets/img/characters.jpg";
+import charactersImg from "../assets/img/characters.jpg";
 
-export const Card = ({ name, gender, hair, eyes, uid, type }) => {
+export const Card = ({ item, type }) => {
 
-    return (
-        <div className="card bg-light text-white m-2" style={{ width: "25rem", border: '2px solid #e5a709' }}>
-            
-            <img 
-                src={characters} 
-                className="card-img-top" 
-                alt={name}
-                style={{ height: "250px", objectFit: "cover", objectPosition: "top" }}
-            />
+  const getImageUrl = () => {
+    let category = "";
 
-            <div className="card-body">
+    if (type === "characters") category = "people";
+    if (type === "planets") category = "planets";
+    if (type === "vehicles") category = "vehicles";
 
-                <h5 className="card-title" style={{ color: '#e50914' }}>
-                    {name}
-                </h5>
+    return `https://raw.githubusercontent.com/breatheco-de/swapi-images/master/public/images/${category}/${item.uid}.jpg`;
+  };
 
-                <p className="card-text text-start" style={{ height: "50px", color: "black" }}>
-                    Gender: {gender} <br />
-                    Hair color: {hair} <br />
-                    Eye color: {eyes}
-                </p>
 
-                <hr />
+  return (
+    <div
+      className="card bg-light text-white m-2 card-body d-flex flex-column justify-content-between"
+      style={{ maxWidth: "300px", border: "3px solid #e5a709" }}
+    >
+      <img
+        src={getImageUrl()}
+        className="card-img-top"
+        alt={item.name}
+        onError={(e) => {
+          e.target.src = "https://via.placeholder.com/300x250?text=No+Image";
+        }}
+        style={{
+          height: "250px",
+          objectFit: "cover",
+          objectPosition: "top",
+        }}
+      />
 
-                <Link 
-                    to={`/detail/${type}/${uid}`} 
-                    className="btn btn-danger"
-                >
-                    Find out more
-                </Link>
+      <div className="card-body">
+        <h5 className="card-title" style={{ color: "#e50914" }}>
+          {item.name}
+        </h5>
 
-            </div>
-        </div>
-    );
+        <p className="card-text text-start" style={{ color: "black" }}>
+          {type === "characters" && (
+            <>
+              Gender: {item.gender} <br />
+              Hair color: {item.hair_color} <br />
+              Eye color: {item.eye_color}
+            </>
+          )}
+
+          {type === "vehicles" && (
+            <>
+              Model: {item.model} <br />
+              Vehicle class: {item.vehicle_class} <br />
+              Manufacturer: {item.manufacturer}
+            </>
+          )}
+
+          {type === "planets" && (
+            <>
+              Climate: {item.climate} <br />
+              Terrain: {item.terrain} <br />
+              Population: {item.population}
+            </>
+          )}
+        </p>
+
+        <hr />
+
+        <Link to={`/detail/${type}/${item.uid}`} className="btn btn-danger">
+          Find out more
+        </Link>
+      </div>
+    </div>
+  );
 };

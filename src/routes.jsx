@@ -31,7 +31,7 @@ export const router = createBrowserRouter(
       <Route path="/characters" element={<Characters />} />
       <Route path="/vehicles" element={<Vehicles />} />
       <Route path="/planets" element={<Planets />} />
-      <Route path="/detail/:category/:uid" element={<Detail />} />
+      <Route path="/detail/:type/:uid" element={<Detail />} />
 
     </Route>
   )

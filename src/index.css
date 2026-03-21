@@ -7,6 +7,19 @@ a{
     color: white
 }
 
+h1{
+    font-size: 50px;
+}
+
+.details p{
+    font-size: 20px;
+}
+
+.details{
+    background-color: rgba(18, 31, 208, 0.335);
+    padding: 20px;
+}
+
 .hr-thick{
   border-top: 0.5px solid white;
   opacity: 1;
