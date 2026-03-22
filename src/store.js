@@ -1,5 +1,5 @@
-export const initialStore=()=>{
-  return{
+export const initialStore = () => {
+  return {
     characters: [],
     planets: [],
     vehicles: [],
@@ -28,7 +28,13 @@ export default function storeReducer(store, action = {}) {
         vehicles: action.payload
       };
 
-    case 'add_favorite':
+    case "add_favorite":
+      const exists = store.favorites.some(
+        (fav) => fav.uid === action.payload.uid
+      );
+
+      if (exists) return store;
+
       return {
         ...store,
         favorites: [...store.favorites, action.payload]
@@ -37,7 +43,9 @@ export default function storeReducer(store, action = {}) {
     case 'remove_favorite':
       return {
         ...store,
-        favorites: store.favorites.filter(item => item.uid !== action.payload.uid)
+        favorites: store.favorites.filter(
+          (fav) => fav.uid !== action.payload.uid
+        )
       };
 
     default:

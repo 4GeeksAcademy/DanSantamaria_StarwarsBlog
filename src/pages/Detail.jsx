@@ -27,14 +27,14 @@ export const Detail = () => {
     }
 
     return (
-        <div className="container text-white mt-5 col-md-7">
+        <div className="container text-white mt-5 col-md-6">
 
             <h1 className="text-center mb-4 text-warning">{data.name}</h1>
-            <hr className="border-warning opacity-100 my-5"/>
+            <hr className="border-warning opacity-100 my-5" />
 
             <div className="row">
 
-                <div className="col-md-4 me-5">
+                <div className="col-md-5 me-4">
                     <img
                         src={`https://raw.githubusercontent.com/breatheco-de/swapi-images/master/public/images/${type === "characters" ? "people" : type}/${uid}.jpg`}
                         className="img-fluid rounded shadow "
@@ -42,9 +42,57 @@ export const Detail = () => {
                     />
                 </div>
 
-                <div className="col-md-7 details rounded">
+                {/* Info */}
+                <div className="col-md-4">
+
+                    <h4 className="text-warning fw-bold mb-2">
+                        {type === "characters" && "Character Profile"}
+                        {type === "planets" && "Planetary Data"}
+                        {type === "vehicles" && "Technical Specifications"}
+                    </h4>
 
                     {type === "characters" && (
+                        <h5 className="text-white">
+                            Records from the Jedi Archives indicate that {data.name} is an individual
+                            known across the galaxy. Standing at {data.height} cm, with {data.hair_color} hair
+                            and {data.eye_color} eyes, this {data.gender} figure has played a role in shaping
+                            key events throughout galactic history.
+                        </h5>
+                    )}
+
+                    {type === "planets" && (
+
+
+                        <h5 className="text-white">
+                            Galactic surveys describe {data.name} as a world characterized by a {data.climate}
+                            climate and {data.terrain} terrain. With a population of {data.population},
+                            this planet has contributed to the development and expansion of civilizations
+                            across the galaxy.
+                        </h5>
+                    )}
+
+                    {type === "vehicles" && (
+                        <h5 className="text-white">
+                            Engineering logs reveal that the {data.name} is a vehicle manufactured by
+                            {data.manufacturer}. Designed to transport up to {data.passengers} passengers
+                            with a crew of {data.crew}, it can reach speeds of {data.max_atmosphering_speed},
+                            making it a key asset in both civilian and military operations.
+                        </h5>
+                    )}
+
+                    <Link to="/" className="btn btn-outline-warning mt-3">
+                        ← Back Home
+                    </Link>
+
+                </div>
+            </div>
+
+            <hr className="border-warning opacity-100 my-4" />
+
+            {/* Dynamic info section */}
+            <div className="row text-center g-4">
+
+                {type === "characters" && (
                     <>
                         <Info label="Gender" value={data.gender} />
                         <Info label="Height" value={data.height} />
@@ -74,21 +122,15 @@ export const Detail = () => {
                     </>
                 )}
 
-                </div>
-
             </div>
-            <hr className="border-warning opacity-100 my-2"/>
-            <Link to="/" className="btn btn-outline-warning m-4">
-                ← Back Home
-            </Link>
         </div>
     );
 };
 
 const Info = ({ label, value }) => {
     return (
-        <div className="col-md-12">
-            <div className="">
+        <div className="col-6 col-md-2 ">
+            <div className="p-3 border border-warning rounded h-100 bg-dark">
                 <p className="text-warning mb-1 fw-bold">{label}</p>
                 <p className="mb-0">{value || "unknown"}</p>
             </div>

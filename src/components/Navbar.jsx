@@ -1,10 +1,13 @@
 import { Link } from "react-router-dom";
 import logo from "../assets/img/Logo.png";
+import useGlobalReducer from "../hooks/useGlobalReducer";
 
 export const Navbar = () => {
+	const { store, dispatch } = useGlobalReducer();
+
 	return (
 		<div>
-			<nav className="navbar navbar-expand-lg navbar-dark  p-2 ">
+			<nav className="navbar navbar-expand-lg navbar-dark  p-3 ">
 				<div className="container-fluid">
 
 					<Link to="/" className="navbar-brand ms-3">
@@ -47,30 +50,47 @@ export const Navbar = () => {
 								</li>
 							</Link>
 
-							<li className="nav-item dropdown">
-
+							<div className="dropdown">
 								<button
-									className="btn btn-warning dropdown-toggle ms-2 me-3"
+									className="btn btn-warning dropdown-toggle ms-3"
 									data-bs-toggle="dropdown"
 								>
-									Favorites <span className="badge bg-dark">3</span>
+									Favorites ({store.favorites.length})
 								</button>
 
 								<ul className="dropdown-menu dropdown-menu-end">
 
-									<li className="dropdown-item d-flex justify-content-between">
-										Luke Skywalker
-										<span>❌</span>
-									</li>
+									{store.favorites.length === 0 && (
+										<li className="dropdown-item text-muted">
+											No favorites yet
+										</li>
+									)}
 
-									<li className="dropdown-item d-flex justify-content-between">
-										Tatooine
-										<span>❌</span>
-									</li>
+									{store.favorites.map((fav, index) => (
+										<li
+											key={index}
+											className="dropdown-item d-flex justify-content-between align-items-center"
+										>
+											<Link className="fav-link" to={`/detail/${fav.type}/${fav.uid}`}>
+												{fav.name}
+											</Link>
+
+											<span
+												style={{ cursor: "pointer" }}
+												onClick={() =>
+													dispatch({
+														type: "remove_favorite",
+														payload: fav
+													})
+												}
+											>
+												❌
+											</span>
+										</li>
+									))}
 
 								</ul>
-
-							</li>
+							</div>
 
 						</ul>
 

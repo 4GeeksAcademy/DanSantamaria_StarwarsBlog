@@ -38,3 +38,14 @@ h1{
 .view_more_button {
     width: 150px;
 }
+
+.fav-link {
+  text-decoration: none;
+  color: black;
+  transition: color 0.2s ease;
+  margin-right: 50px;
+}
+
+.fav-link:hover {
+  color: #ffc107; 
+}

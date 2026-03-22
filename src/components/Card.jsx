@@ -1,8 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import charactersImg from "../assets/img/characters.jpg";
+import useGlobalReducer from "../hooks/useGlobalReducer";
 
 export const Card = ({ item, type }) => {
+
+  const { dispatch, store } = useGlobalReducer();
 
   const getImageUrl = () => {
     let category = "";
@@ -70,7 +72,25 @@ export const Card = ({ item, type }) => {
         <Link to={`/detail/${type}/${item.uid}`} className="btn btn-danger">
           Find out more
         </Link>
+
+        <button
+          className="btn btn-outline-warning ms-2"
+          onClick={() =>
+            dispatch({
+              type: "add_favorite",
+              payload: {
+                name: item.name,
+                uid: item.uid,
+                type: type
+              }
+            })
+          }
+        >
+          ❤️
+        </button>
+        
       </div>
     </div>
   );
 };
+

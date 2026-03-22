@@ -18,7 +18,7 @@ export const Layout = () => {
                 <Navbar />
                 <hr className="hr-thick" />
                 <Outlet />
-                <hr className="hr-thick" />
+                <hr className="hr-thick mt-3" />
                 <Footer />
             </body>
         </ScrollToTop>
